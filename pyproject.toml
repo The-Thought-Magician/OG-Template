@@ -1,0 +1,12 @@
+[project]
+name = "og-template"
+version = "0.1.0"
+description = "A comprehensive FastAPI backend template."
+authors = [{ name = "Your Name", email = "you@example.com" }]
+
+[tool.uv]
+pip-args = ["--no-deps"]
+
+[tool.uv.sources]
+fastapi = { version = "0.104.1" }
+uvicorn = { version = "0.23.2" }
