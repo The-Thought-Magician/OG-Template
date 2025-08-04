@@ -1,12 +1,59 @@
 [project]
 name = "og-template"
 version = "0.1.0"
-description = "A comprehensive FastAPI backend template."
-authors = [{ name = "Your Name", email = "you@example.com" }]
+description = "A comprehensive FastAPI backend template with modular architecture."
+authors = [{ name = "Chiranjeet Mishra", email = "chiranjeet@example.com" }]
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.104.1",
+    "uvicorn[standard]>=0.23.2",
+    "pydantic>=2.0.0",
+    "python-multipart>=0.0.6"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "httpx>=0.24.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "flake8>=6.0.0"
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [tool.uv]
-pip-args = ["--no-deps"]
+dev-dependencies = [
+    "pytest>=7.4.0",
+    "httpx>=0.24.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "flake8>=6.0.0"
+]
 
-[tool.uv.sources]
-fastapi = { version = "0.104.1" }
-uvicorn = { version = "0.23.2" }
+[tool.black]
+line-length = 88
+target-version = ['py311']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88

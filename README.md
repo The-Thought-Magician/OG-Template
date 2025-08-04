@@ -8,11 +8,18 @@ A fucking cool template that has backend set up with fastapi, allows you to buil
 ## Current Features
 
 *   **FastAPI Foundation:** Modern, fast web framework for building APIs with Python 3.11+
-*   **Modular Architecture:** Clean directory structure for organized development
+*   **Modular Architecture:** Clean directory structure with organized modules
 *   **Docker Support:** Containerized application with Docker and Docker Compose
 *   **UV Package Manager:** Fast Python package installer and resolver
 *   **Testing Setup:** Pre-configured testing environment with pytest
 *   **Development Scripts:** Helper scripts for running and managing the application
+*   **Configuration Management:** Environment-based configuration with .env support
+*   **API Documentation:** Auto-generated OpenAPI/Swagger documentation
+*   **Middleware Support:** CORS and logging middleware included
+*   **User Management:** Basic user CRUD operations with in-memory storage
+*   **Structured Validation:** Pydantic-like schema validation
+*   **Service Layer:** Business logic separated into service classes
+*   **Controller Pattern:** Request handling with controller classes
 
 ## Planned Features (In Development)
 
@@ -62,23 +69,43 @@ A fucking cool template that has backend set up with fastapi, allows you to buil
     ./scripts/run.sh
     ```
 
+5.  **Quick setup with setup script:**
+    ```bash
+    chmod +x setup.sh
+    ./setup.sh
+    ```
+
 ### Testing
 
 Run the test suite:
 ```bash
 # Install test dependencies
-uv pip install pytest fastapi[test]
+uv pip install pytest httpx
 
 # Run tests
 pytest tests/
 ```
 
+### API Testing
+
+Test the API endpoints:
+```bash
+# Make sure the server is running, then:
+chmod +x scripts/test_api.sh
+./scripts/test_api.sh
+```
+
 ### Usage
 
-The template includes a basic FastAPI application with:
-- A simple "Hello World" endpoint at `/`
-- Organized directory structure for scalable development
-- Docker configuration for easy deployment
+The template includes a comprehensive FastAPI application with:
+- RESTful API endpoints with proper HTTP methods
+- User management system with CRUD operations
+- Health check and monitoring endpoints
+- Modular architecture with services, controllers, and models
+- Environment-based configuration
+- Automatic API documentation
+- Request/response validation
+- Error handling and logging
 
 ## Directory Structure
 
@@ -122,7 +149,21 @@ OG-Template/
 
 ## Current API Endpoints
 
-- **GET /**: Returns a simple "Hello World" message
+### Core Endpoints
+- **GET /**: Returns welcome message and app information
+- **GET /health**: Health check endpoint
+- **GET /docs**: Auto-generated API documentation (Swagger UI)
+- **GET /redoc**: Alternative API documentation (ReDoc)
+
+### API v1 Endpoints
+- **GET /api/v1/health/**: API health check
+- **GET /api/v1/health/ping**: Simple ping endpoint
+- **GET /api/v1/info**: Application information
+- **POST /api/v1/users/**: Create a new user
+- **GET /api/v1/users/**: Get all users
+- **GET /api/v1/users/{user_id}**: Get user by ID
+- **PUT /api/v1/users/{user_id}**: Update user
+- **DELETE /api/v1/users/{user_id}**: Delete user
 
 ## Technology Stack
 
